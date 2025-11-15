@@ -106,3 +106,102 @@ def flip_model(data=None):
     else:
         pyro.sample("obs", dist.Bernoulli(p))
 ```
+
+**Relation Reliability Models:**
+```python
+def relation_model_all_ones():
+    theta = pyro.sample("theta", dist.Beta(torch.ones(N_relations), torch.ones(N_relations)).to_event(1))
+    with pyro.plate("data", len(idx_fixed)):
+        pyro.sample("obs", dist.Bernoulli(theta[idx_fixed]), obs=torch.ones(len(idx_fixed)))
+    return theta
+
+def relation_model_mixed():
+    theta = pyro.sample("theta", dist.Beta(torch.ones(N_relations), torch.ones(N_relations)).to_event(1))
+    with pyro.plate("data", len(idx_fixed)):
+        pyro.sample("obs", dist.Bernoulli(theta[idx_fixed]), obs=mixed_data)
+    return theta
+```
+### Inference Setup
+- MCMC with NUTS sampler configuration
+- Posterior sampling with warmup steps
+- Predictive distribution generation using `Predictive` class
+- Comparative analysis between different data scenarios
+
+## Implementation Details
+
+### Sampling Configuration
+- **Warmup Steps**: 200 for chain convergence
+- **Num Samples**: 500-1000 for posterior estimation
+- **Random Seeds**: Fixed for reproducibility using `pyro.set_rng_seed(0)`
+- **Validation**: Enabled with `pyro.enable_validation(True)`
+
+### Data Generation
+- Synthetic relation reliability data with 100 samples
+- Mixed dataset: 70% positive observations, 30% negative
+- Randomized indexing across 3 relations
+- Permuted data for unbiased sampling
+
+### Visualization Methods
+- Multi-panel figure layouts with 3 subplots
+- Color-coded histogram distributions for different relations
+- Comparative analysis plots between conditioning scenarios
+- Posterior mean annotations and reference lines
+- Proper labeling and legends for interpretability
+
+## Results and Outputs
+
+### Parameter Estimation
+- Posterior means for coin bias parameter (p)
+- Relation reliability distributions (theta)
+- Uncertainty quantification through variance and distribution shapes
+- Predictive samples for future observations
+
+### Comparative Analysis
+- Clear differentiation between all-ones vs mixed data conditioning
+- Demonstration of Bayesian updating principles
+- Visual evidence of posterior convergence
+- Quantitative comparison of posterior means
+
+## Technical Requirements
+
+### Dependencies
+- `pyro-ppl`: Probabilistic programming library
+- `torch`: Backend for tensor operations
+- `matplotlib`: Visualization and plotting
+- Standard scientific Python stack (NumPy, etc.)
+
+### Hardware Considerations
+- CPU execution sufficient for all models
+- Memory efficient sampling algorithms
+- Scalable to larger datasets with adjusted parameters
+- Suitable for both local and cloud execution
+
+## Usage Instructions
+
+1. **Initialization**: Execute environment setup cells first
+2. **Model Definition**: Run model definition cells sequentially
+3. **Inference**: Execute MCMC sampling with specified parameters
+4. **Analysis**: Run visualization and comparison cells
+5. **Customization**: Modify hyperparameters and data as needed
+
+### Key Execution Steps:
+```python
+# Initialize MCMC
+nuts_kernel = NUTS(model)
+mcmc = MCMC(nuts_kernel, num_samples=1000, warmup_steps=200)
+
+# Run inference
+mcmc.run(data)
+
+# Get results
+posterior_samples = mcmc.get_samples()
+```
+## Extensibility
+
+The notebook structure supports:
+
+- Additional probabilistic distributions from `pyro.distributions`
+- Complex hierarchical models with multiple levels
+- Custom inference algorithms and samplers
+- Integration with external datasets and real-world data
+- Extended visualization and analysis techniques
