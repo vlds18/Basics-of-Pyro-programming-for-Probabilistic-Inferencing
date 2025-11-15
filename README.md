@@ -1,4 +1,4 @@
-# Basics of Pyro Programming
+# Basics of Pyro programming
 
 This notebook provides a comprehensive introduction to probabilistic programming using Pyro, a flexible probabilistic programming language built on PyTorch.
 
@@ -90,48 +90,48 @@ def relation_model_mixed():
         pyro.sample("obs", dist.Bernoulli(theta[idx_fixed]), obs=mixed_data)
     return theta
 ```
-### Inference Setup
+### Inference setup
 - MCMC with NUTS sampler configuration
 - Posterior sampling with warmup steps
 - Predictive distribution generation using `Predictive` class
 - Comparative analysis between different data scenarios
 
-## Implementation Details
+## Implementation details
 
-### Sampling Configuration
+### Sampling configuration
 - **Warmup Steps**: 200 for chain convergence
 - **Num Samples**: 500-1000 for posterior estimation
 - **Random Seeds**: Fixed for reproducibility using `pyro.set_rng_seed(0)`
 - **Validation**: Enabled with `pyro.enable_validation(True)`
 
-### Data Generation
+### Data generation
 - Synthetic relation reliability data with 100 samples
 - Mixed dataset: 70% positive observations, 30% negative
 - Randomized indexing across 3 relations
 - Permuted data for unbiased sampling
 
-### Visualization Methods
+### Visualization methods
 - Multi-panel figure layouts with 3 subplots
 - Color-coded histogram distributions for different relations
 - Comparative analysis plots between conditioning scenarios
 - Posterior mean annotations and reference lines
 - Proper labeling and legends for interpretability
 
-## Results and Outputs
+## Results and outputs
 
-### Parameter Estimation
+### Parameter estimation
 - Posterior means for coin bias parameter (p)
 - Relation reliability distributions (theta)
 - Uncertainty quantification through variance and distribution shapes
 - Predictive samples for future observations
 
-### Comparative Analysis
+### Comparative analysis
 - Clear differentiation between all-ones vs mixed data conditioning
 - Demonstration of Bayesian updating principles
 - Visual evidence of posterior convergence
 - Quantitative comparison of posterior means
 
-## Technical Requirements
+## Technical requirements
 
 ### Dependencies
 - `pyro-ppl`: Probabilistic programming library
@@ -139,21 +139,21 @@ def relation_model_mixed():
 - `matplotlib`: Visualization and plotting
 - Standard scientific Python stack (NumPy, etc.)
 
-### Hardware Considerations
+### Hardware considerations
 - CPU execution sufficient for all models
 - Memory efficient sampling algorithms
 - Scalable to larger datasets with adjusted parameters
 - Suitable for both local and cloud execution
 
-## Usage Instructions
+## Usage instructions
 
 1. **Initialization**: Execute environment setup cells first
-2. **Model Definition**: Run model definition cells sequentially
+2. **Model definition**: Run model definition cells sequentially
 3. **Inference**: Execute MCMC sampling with specified parameters
 4. **Analysis**: Run visualization and comparison cells
 5. **Customization**: Modify hyperparameters and data as needed
 
-### Key Execution Steps:
+### Key execution steps:
 ```python
 # Initialize MCMC
 nuts_kernel = NUTS(model)
