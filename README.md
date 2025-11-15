@@ -46,37 +46,6 @@ Comparative study of two scenarios:
 - to_event() for dependent random variables
 - Multi-dimensional parameter handling
 
-## Model Comparison insights
-
-The notebook demonstrates how different data scenarios affect posterior estimates:
-
-- **All Positive Data**: Posterior reliabilities converge toward 1.0
-- **Mixed Data (70% positive)**: Posterior reliabilities center around true proportion
-
-## Visualization features
-
-Comprehensive plotting of:
-- Posterior parameter distributions
-- Comparative analysis across conditioning scenarios
-- Histogram representations of sampled parameters
-
-## Applications
-
-This foundation enables:
-- Bayesian A/B testing frameworks
-- System reliability estimation
-- Probabilistic decision support systems
-- Machine learning uncertainty quantification
-
-## Educational value
-
-Serves as prerequisite knowledge for advanced topics including:
-- Variational Inference methods
-- Deep probabilistic modeling
-- Bayesian neural networks
-- Hierarchical model structures
-- Probabilistic time series analysis
-
 ## Code structure
 
 ### Model definitions
