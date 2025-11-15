@@ -76,3 +76,16 @@ Serves as prerequisite knowledge for advanced topics including:
 - Bayesian neural networks
 - Hierarchical model structures
 - Probabilistic time series analysis
+
+## Code Structure
+
+### Model Definitions
+The notebook implements several key probabilistic models:
+
+**Basic Model:**
+```python
+def model():
+    p = pyro.sample("p", dist.Beta(2.0, 2.0))
+    x = pyro.sample("x", dist.Bernoulli(p))
+    return x
+```
