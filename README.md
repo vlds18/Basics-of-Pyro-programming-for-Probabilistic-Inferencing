@@ -96,3 +96,13 @@ def conditioned_model():
     pyro.sample("x", dist.Bernoulli(p), obs=torch.tensor(1.0))
     return p
 ```
+**Bayesian Coin Flip Model:**
+```python
+def flip_model(data=None):
+    p = pyro.sample("p", dist.Beta(2.0, 2.0))
+    if data is not None and len(data) > 0:
+        with pyro.plate("data_plate", len(data)):
+            pyro.sample("obs", dist.Bernoulli(p), obs=data)
+    else:
+        pyro.sample("obs", dist.Bernoulli(p))
+```
