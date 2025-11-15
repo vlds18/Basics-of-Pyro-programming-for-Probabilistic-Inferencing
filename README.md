@@ -2,7 +2,7 @@
 
 This notebook provides a comprehensive introduction to probabilistic programming using Pyro, a flexible probabilistic programming language built on PyTorch.
 
-## Project Overview
+## Project overview
 
 This tutorial covers fundamental concepts from basic probabilistic models to Bayesian inference with MCMC sampling, demonstrating how to:
 
@@ -20,7 +20,7 @@ Introduction to fundamental Pyro concepts including random variable sampling and
 ### 2. Conditioned Posterior Models
 Implementation of models with observational data and posterior inference.
 
-### 3. Bayesian Coin Flip Inference
+### 3. Bayesian Coin Flip inference
 Complete pipeline for estimating coin bias parameters using real observational data.
 
 ### 4. Relation Reliability Analysis
@@ -28,32 +28,32 @@ Comparative study of two scenarios:
 - All positive observations conditioning
 - Mixed data conditioning (70% positive)
 
-## Core Concepts
+## Core concepts
 
-### Probabilistic Programming Fundamentals
+### Probabilistic Programming fundamentals
 - Random variable sampling with pyro.sample()
 - Prior distribution specification
 - Observational data integration
 
-### Bayesian Inference Methods
+### Bayesian Inference methods
 - Markov Chain Monte Carlo (MCMC) sampling
 - No-U-Turn Sampler (NUTS) implementation
 - Posterior distribution estimation
 - Predictive distribution sampling
 
-### Advanced Pyro Features
+### Advanced Pyro features
 - Plate notation for independent conditional distributions
 - to_event() for dependent random variables
 - Multi-dimensional parameter handling
 
-## Model Comparison Insights
+## Model Comparison insights
 
 The notebook demonstrates how different data scenarios affect posterior estimates:
 
 - **All Positive Data**: Posterior reliabilities converge toward 1.0
 - **Mixed Data (70% positive)**: Posterior reliabilities center around true proportion
 
-## Visualization Features
+## Visualization features
 
 Comprehensive plotting of:
 - Posterior parameter distributions
@@ -68,7 +68,7 @@ This foundation enables:
 - Probabilistic decision support systems
 - Machine learning uncertainty quantification
 
-## Educational Value
+## Educational value
 
 Serves as prerequisite knowledge for advanced topics including:
 - Variational Inference methods
@@ -77,9 +77,9 @@ Serves as prerequisite knowledge for advanced topics including:
 - Hierarchical model structures
 - Probabilistic time series analysis
 
-## Code Structure
+## Code structure
 
-### Model Definitions
+### Model definitions
 The notebook implements several key probabilistic models:
 
 **Basic Model:**
