@@ -89,3 +89,10 @@ def model():
     x = pyro.sample("x", dist.Bernoulli(p))
     return x
 ```
+**Conditioned Model:**
+```python
+def conditioned_model():
+    p = pyro.sample("p", dist.Beta(2.0, 2.0))
+    pyro.sample("x", dist.Bernoulli(p), obs=torch.tensor(1.0))
+    return p
+```
